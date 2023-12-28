@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./results-summary-component-main/assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Results summary component</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- left card  -->
+        <div class="left">
+            <p class="result">Your Result</p>
+            <div class="circle">
+                
+                    <h1>76</h1>
+                    <p>of 100</p>
+               
+            </div>
+            <div class="great">
+            <h2>Great</h2>
+            <p>You scored higher than 65% of the people who have taken these tests.</p>
+        </div>
+        </div>
+        
+        <!-- right card  -->
+        <div class="right">
+            <h1>Summary</h1>
+            <div class="list">
+                <div id="list-1"></div>
+                <div id="list-2"></div>
+                <div id="list-3"></div>
+                <div id="list-4"></div>
+            </div>
+            <button>Continue</button>
+        </div>
+    </div>
+    <!-- JS  -->
+<script>
+    var jsonDataLists = [
+  {
+    "category": "Reaction",
+    "score": 80,
+    "icon": "./results-summary-component-main/assets/images/icon-reaction.svg",
+  },
+  {
+    "category": "Memory",
+    "score": 92,
+    "icon": "./results-summary-component-main/assets/images/icon-memory.svg",
+  },
+  {
+    "category": "Verbal",
+    "score": 61,
+    "icon": "./results-summary-component-main/assets/images/icon-verbal.svg",
+  },
+  {
+    "category": "Visual",
+    "score": 72,
+    "icon": "./results-summary-component-main/assets/images/icon-visual.svg",
+  }
+];
+
+function createListElement(item, containerId, itemClass){
+    var listContainer = document.getElementById(containerId);
+
+    var listItemContainer = document.createElement("div");
+
+    listItemContainer.innerHTML = `
+            <img src="${item.icon}" alt="Image">
+            <p class="text-react">${item.category}</p>
+            <p class="score">${item.score} <span class="full">/100</span></p>
+        `;
+
+        // Add a CSS class for the item background
+        listItemContainer.classList.add("list-item", itemClass);
+
+        // Append the HTML element to the container
+        listContainer.appendChild(listItemContainer);
+    }
+
+    // Create HTML elements for each list
+    createListElement(jsonDataLists[0], "list-1", "list1-item");
+    createListElement(jsonDataLists[1], "list-2", "list2-item");
+    createListElement(jsonDataLists[2], "list-3", "list3-item");
+    createListElement(jsonDataLists[3], "list-4", "list4-item");
+
+ 
+</script>
+</body>
+</html>
